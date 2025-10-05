@@ -1,0 +1,16 @@
+check_interval = 5
+
+vault_nodes = [
+    { host = "http://localhost:8200" },
+    { host = "http://localhost:8201" },
+    { host = "http://localhost:8202" },
+]
+
+[log]
+level = "info"
+json = false
+
+[bitwarden]
+host = "https://vault.bitwarden.com"
+token = ""
+secret_ids = ["2460335d-6b9f-43ac-8bd0-8ceaedcc279e"]

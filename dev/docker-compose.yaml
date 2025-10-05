@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json
+services:
+  vault1:
+    image: hashicorp/vault:latest
+    container_name: vault1
+    ports:
+      - "8200:8200"
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./dev/data/vault1:/vault/file
+      - ./dev/config/vault1:/vault/config
+    command: vault server -config=/vault/config/vault.hcl
+    networks:
+      - vault-net
+
+  vault2:
+    image: hashicorp/vault:latest
+    container_name: vault2
+    ports:
+      - "8201:8200"
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./dev/data/vault2:/vault/file
+      - ./dev/config/vault2:/vault/config
+    command: vault server -config=/vault/config/vault.hcl
+    networks:
+      - vault-net
+
+  vault3:
+    image: hashicorp/vault:latest
+    container_name: vault3
+    ports:
+      - "8202:8200"
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./dev/data/vault3:/vault/file
+      - ./dev/config/vault3:/vault/config
+    command: vault server -config=/vault/config/vault.hcl
+    networks:
+      - vault-net
+
+networks:
+  vault-net:

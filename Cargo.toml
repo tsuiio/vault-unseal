@@ -1,0 +1,44 @@
+[package]
+name = "vault-unseal"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1.47.1", features = [
+    "rt",
+    "rt-multi-thread",
+    "time",
+    "macros",
+    "signal",
+] }
+error-stack = { version = "0.6.0", features = ["serde"] }
+thiserror = "2.0.16"
+tracing = "0.1.41"
+# issue: https://github.com/tokio-rs/tracing/issues/3378
+tracing-subscriber = { version = "=0.3.19", features = [
+    "local-time",
+    "json",
+    "valuable",
+] }
+vaultrs = { git = "https://github.com/jmgilman/vaultrs", branch = "master" }
+url = { version = "2.5.7", features = ["serde"] }
+serde = "1.0.228"
+figment = { version = "0.10.19", features = ["toml", "json", "yaml", "env"] }
+bitwarden = "1.0.0"
+tokio-util = "0.7.16"
+anyhow = "1.0.100"
+rustls = { version = "0.23.32", features = ["aws-lc-rs"] }
+rustls-webpki = "0.102"
+uuid = "1.18.1"
+futures = "0.3.31"
+clap = { version = "4.5.47", features = ["derive"] }
+dotenvy = "0.15.7"
+tracing-log = "0.2.0"
+supports-color = "3.0.2"
+supports-unicode = "3.0.0"
+
+# valuable 
+# valuable = { version = "0.1.1" }
+# serde_json = { git = 'https://github.com/Vrajs16/json.git', branch = "feature-valuable", features = [
+#     "valua",
+# ] }
